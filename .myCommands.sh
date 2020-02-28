@@ -1,3 +1,27 @@
+# This install Function Only Needs to Be Run Once. After you run it, you can delete it!
+
+# Use my functions as templates! Soon, you'll fall in love with iTerm just like I have (:
+function install (){
+  echo "This only has to be run once! Brew will be installed, and so will cowsay to ensure that everything works properly. If you one to continue, enter '1' :"
+  read -p 'Would you like to continue?: ' answer
+  if (($answer == 1))
+  then
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    echo "'brew' Successfully Installed! - exiting"
+  else
+    echo "Not installing 'brew'!"
+  fi
+  echo "Now installing cowsay, if you would like to continue, type '1'"
+  read -p "Would you like to continue?: " answer2
+  if (($answer2 == 1))
+  then
+    brew install cowsay
+    echo "'cowsay' Successfully Installed"
+  else
+    echo "Not installing 'cowsay'!"
+  fi
+}
+
 # bored in class? play bloxorz.
 function bored(){
   open -a "Google Chrome" 'https://www.miniclip.com/games/bloxorz/en/'
@@ -13,13 +37,22 @@ function ytmp4() {
   youtube-dl -f 22 --no-check-certificate $1
 }
 
-#edit a website
+#edit a website by choosing the file in your directory.
 function webedit() {
   open -a 'Atom' $1
   open -a 'Google Chrome' $1
 }
 
-#fuck this class.
+#if you're ... you know... doing anything suspicious
+function dub {
+  cowsay "nothin goin on here officer..... DRAAAAAAAKEEEE???!!?!?"
+  osascript -e "set Volume 0" #set's system volume to 0
+  osascript -e 'quit app "Messages"' #quitting out of messages
+  osascript -e 'quit app "All-in-One Messenger"' #personal messenger that i use... quitting out of it.
+  osascript -e 'quit app "Google Chrome"' #quitting out of Google Chrome. All you have to do is look up the Application name and Voila, quit out of it.
+}
+#I dislike this class. I just created a function to open all of my files... here is an example of what you can do!
+#Change the directories to your own personal ones!
 function oop(){
   echo "Have a great class!"
   echo "Closing Messages and Muting Computer..."
@@ -34,17 +67,17 @@ function oop(){
   osascript -e 'quit app "Messages"'
 }
 
-#needa fix your website bc you realized you fucked up again
+#needa fix your website bc you realized you f***ed up again
 function mypage() {
   cd
   open -a "Atom"
-  osascript -e 'tell application "System Events" to keystroke "n" using {command down}'
+  osascript -e 'tell application "System Events" to keystroke "n" using {command down}' #opens a new window in atom once you go into atom.
   open -a 'Atom' './Desktop/laughing-pancake/'
   open -a "Google Chrome"
-  osascript -e 'tell application "System Events" to keystroke "n" using {command down}'
+  osascript -e 'tell application "System Events" to keystroke "n" using {command down}' #opens a new window in google chrome once you go into google chrome.
   open -a 'Google Chrome' './Desktop/laughing-pancake/index.html'
   open ./Desktop/laughing-pancake/
-  echo "Opening Website Editing Environment"
+  echo "Opening Website Editing Environment" #if everything is done successfully, this will open (:
 }
 
 #needa hit dem messages?!?!
@@ -52,6 +85,8 @@ function m() {
   open -a 'Messages'
   echo "Opening Messages"
 }
+
+#shortcuts to look cool
 function gc() {
   open -a 'Google Chrome'
   echo "Opening Google Chrome"
@@ -60,6 +95,7 @@ function atom() {
   open -a 'Atom'
   echo "Opening Atom"
 }
+#I'm logged into multiple accounts, this cd's into my school account
 function drive() {
   open 'https://drive.google.com/drive/u/1/my-drive'
   echo "Opening Google Drive"
@@ -74,7 +110,7 @@ function classes() {
   python3 NewClasses.py
   echo "New Classes is Open!"
 }
-
+# This command saves lives. This saves your commands to bash so that you don't have to do it manually.
 function comsave() {
   cd ~
   cp -fr ~/.myCommands.sh ~/Bash\ Github
@@ -193,12 +229,9 @@ function rlc {
   osascript -e 'tell application "System Events" to keystroke "n" using {command down}'
   open -a "Google Chrome" 'http://www.refugeelawreader.org/en/i-introduction-to-international-refugee-law-background-and-context.html'
   open -a "Google Chrome" 'https://www.refworld.org/'
-  echo "refugeelawreader.org credentials"
-  echo "user: ksv244"
-  echo "pw:: R0bin54!"
   open -a "Microsoft Word" "./Desktop/UPDATED CORE COURSE SYLLABUS 2020 REFUGEES LAW AND CRISES R BYRNE.docx"
 }
-
+#opens my TA grading environment
 function grading {
   open -a 'idle'
   delay 0.5
@@ -220,6 +253,7 @@ function mvc {
   open -a 'Adobe Acrobat' "file:///Users/trapbookpro/Desktop/MATH-UH%201020-001%20MVC%20with%20Applications%20to%20Sci%20_%20Eng%20-%20Spring%202020%20-Syllabus%20(2).pdf"
 }
 
+#runs my c++ code after I manually make it. it's just easier (:
 function cpr () {
   g++ $1 -o && ./a.out -w
 }
@@ -236,6 +270,7 @@ function prob {
   open -a "Google Chrome" "https://www.webassign.net/wa-auth/login?sessionExpired=true"
 }
 
+#creates a new folder for every class!
 function dsc {
   read -p 'Lecture Number: ' number
   open -a "Visual Studio Code" "./Desktop/datastructurescpp"
@@ -278,7 +313,7 @@ function handshake {
   open -a "Google Chrome" "https://nyu.joinhandshake.com/login?ref=app-domain"
 }
 
-function qcd {
+#quick cd function to quickly change directories if i'm bored. i have a lot of folders. go figure.
   cowsay "What folder would you like to Quick-cd into?"
   cd ~
   {
