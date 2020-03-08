@@ -124,10 +124,6 @@ function groupme {
   open -a "Google Chrome" 'https://web.groupme.com/chats'
 }
 
-function phi {
-  open -a 'Google Chrome' 'https://docs.google.com/document/d/1YvPqw56hi-N361xgvdfkY9LrGQ5a7fUYakl2yxreVbU/edit'
-}
-
 function compsci {
   cd
   open ./Google\ Drive/Computer\ Science/
